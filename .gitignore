@@ -1,0 +1,18 @@
+# Rust build output and rustfmt backups
+/target/
+**/*.rs.bk
+
+# macOS metadata
+.DS_Store
+
+# Editor swap and backup files
+*.swp
+*.swo
+*~
+
+# Keep Cargo.lock and proptest regression files for reproducibility.
+
+# Generated coverage reports and profiling data
+/lcov.info
+*.profraw
+*.profdata

@@ -1,0 +1,54 @@
+# onebrc-rs
+
+## Run
+
+Run tests:
+```sh
+cargo test
+```
+
+Run via cargo:
+```sh
+cargo run
+```
+
+Build and run executable in release mode
+```sh
+cargo build --release
+./target/release/onebrc-rs
+```
+
+Run formatter:
+```
+cargo fmt
+```
+Use
+```
+cargo fmt -- --check
+```
+to check formatting without changing files.
+
+Run linter:
+```
+cargo clippy --all-targets -- -D warnings
+```
+
+## Coverage
+
+CI caches Cargo dependencies and build artifacts, runs the checks, and generates
+`lcov.info` with `cargo-llvm-cov` before uploading it to Codecov.
+
+Enable this repository in Codecov and add its upload token as the GitHub Actions
+secret `CODECOV_TOKEN`. Coverage generation and test failures fail CI; Codecov
+upload errors are reported without failing CI, matching `fail_ci_if_error: false`.
+
+To generate coverage locally with a rustup-managed toolchain:
+
+```sh
+rustup component add llvm-tools-preview
+cargo install cargo-llvm-cov --locked
+cargo llvm-cov --all-features --lcov --output-path lcov.info
+```
+
+For a Nix-managed toolchain, provide `cargo-llvm-cov` and matching LLVM tools;
+set `LLVM_COV` and `LLVM_PROFDATA` to their executable paths if needed.
